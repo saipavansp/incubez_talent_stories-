@@ -9,21 +9,21 @@ const PitchesPage = () => {
   const pitches = [
     {
       id: 1,
+      title: "Looking for Founder's Office Role",
+      company: 'Chahath',
+      videoUrl: "/videos/chahath - founder's office Role.mp4"
+    },
+    {
+      id: 2,
       title: 'Looking for Co-Founder',
       company: 'Pinkwellness',
       videoUrl: '/videos/pinkwellness seeking co founder.mp4'
     },
     {
-      id: 2,
+      id: 3,
       title: "Looking for Founder's Office Role",
       company: 'Startup',
       videoUrl: "/videos/Founder's office Role.mp4"
-    },
-    {
-      id: 3,
-      title: "Looking for Founder's Office Role",
-      company: 'Chahath',
-      videoUrl: "/videos/chahath - founder's office Role.mp4"
     }
   ]
 
@@ -67,11 +67,14 @@ const PitchesPage = () => {
                   
                   {/* Play Button */}
                   <button 
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
                       setSelectedVideo(pitch)
                       setIsVideoModalOpen(true)
                     }}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
+                    type="button"
                   >
                     <div className="bg-incubez-red rounded-full p-5 group-hover:scale-110 transition-all duration-300 shadow-2xl">
                       <PlayIcon className="h-10 w-10 text-white" />

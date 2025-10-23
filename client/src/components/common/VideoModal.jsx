@@ -71,18 +71,24 @@ const VideoModal = ({ isOpen, onClose, videoUrl, title }) => {
 
           {/* HTML5 Video Player */}
           <div className="relative w-full aspect-video bg-black">
-            <video
-              ref={videoRef}
-              src={videoUrl}
-              className="w-full h-full"
-              controls
-              controlsList="nodownload"
-              onContextMenu={(e) => e.preventDefault()} // Disable right-click
-              playsInline
-            >
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {videoUrl ? (
+              <video
+                ref={videoRef}
+                src={videoUrl}
+                className="w-full h-full"
+                controls
+                controlsList="nodownload"
+                onContextMenu={(e) => e.preventDefault()} // Disable right-click
+                playsInline
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-white">
+                <p>Loading video...</p>
+              </div>
+            )}
           </div>
 
           {/* Instructions */}

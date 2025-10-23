@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ChevronLeftIcon, ChevronRightIcon, PlayIcon } from '@heroicons/react/24/outline'
@@ -6,52 +6,40 @@ import VideoModal from '../common/VideoModal'
 
 const SuccessStories = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   const stories = [
     {
       id: 1,
+      title: "Looking for Founder's Office Role",
+      company: 'Chahath',
+      videoUrl: "/videos/chahath - founder's office Role.mp4"
+    },
+    {
+      id: 2,
       title: 'Looking for Co-Founder',
       company: 'Pinkwellness',
       videoUrl: '/videos/pinkwellness seeking co founder.mp4'
     },
     {
-      id: 2,
+      id: 3,
       title: "Looking for Founder's Office Role",
       company: 'Startup',
       videoUrl: "/videos/Founder's office Role.mp4"
-    },
-    {
-      id: 3,
-      title: "Looking for Founder's Office Role",
-      company: 'Chahath',
-      videoUrl: "/videos/chahath - founder's office Role.mp4"
     }
   ]
 
-  // Auto-play carousel
-  useEffect(() => {
-    if (isAutoPlaying) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % stories.length)
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-  }, [isAutoPlaying, stories.length])
+  // Manual navigation only (no auto-play)
 
   const handlePrevious = () => {
-    setIsAutoPlaying(false)
     setCurrentIndex((prev) => (prev - 1 + stories.length) % stories.length)
   }
 
   const handleNext = () => {
-    setIsAutoPlaying(false)
     setCurrentIndex((prev) => (prev + 1) % stories.length)
   }
 
   const handleDotClick = (index) => {
-    setIsAutoPlaying(false)
     setCurrentIndex(index)
   }
 
