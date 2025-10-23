@@ -37,7 +37,7 @@ const Partners = () => {
         </motion.div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 max-w-6xl mx-auto items-center">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -45,19 +45,17 @@ const Partners = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="group"
+              className="flex items-center justify-center"
             >
-              <div className="bg-white rounded-lg p-6 h-24 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-h-12 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                  onError={(e) => {
-                    e.target.style.display = 'none'
-                    e.target.parentElement.innerHTML = `<span class="text-gray-600 text-xs font-semibold text-center group-hover:text-incubez-red transition-colors">${partner.fallback}</span>`
-                  }}
-                />
-              </div>
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="max-h-16 w-auto object-contain"
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                  e.target.parentElement.innerHTML = `<span class="text-gray-600 text-sm font-semibold text-center">${partner.fallback}</span>`
+                }}
+              />
             </motion.div>
           ))}
         </div>
