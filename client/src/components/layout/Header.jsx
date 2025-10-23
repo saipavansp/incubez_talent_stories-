@@ -85,7 +85,7 @@ const Header = () => {
             <div className="flex items-center">
               <Link 
                 to="/founder/pitch" 
-                className="bg-white text-incubez-black px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-0.5"
+                className="bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Post Your Pitch
               </Link>
@@ -132,7 +132,7 @@ const Header = () => {
               <Link 
                 to="/founder/pitch" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-white text-incubez-black px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-gray-100"
+                className="block w-full text-center bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-red-700"
               >
                 Post Your Pitch
               </Link>
