@@ -18,7 +18,7 @@ const Partners = () => {
   ]
 
   return (
-    <section id="partners" className="py-20 bg-gray-50">
+    <section id="partners" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="section-padding">
         {/* Section Header */}
         <motion.div
@@ -26,18 +26,18 @@ const Partners = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Trusted by Leading <span className="text-incubez-red">Partners</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Join the growing ecosystem of innovative companies and investors who trust INCUBEZ
           </p>
         </motion.div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 max-w-6xl mx-auto items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 sm:gap-10 md:gap-12 max-w-6xl mx-auto items-center px-4">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -45,15 +45,15 @@ const Partners = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center min-h-[60px]"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="max-h-16 w-auto object-contain"
+                className="max-h-12 sm:max-h-14 md:max-h-16 w-auto object-contain"
                 onError={(e) => {
                   e.target.style.display = 'none'
-                  e.target.parentElement.innerHTML = `<span class="text-gray-600 text-sm font-semibold text-center">${partner.fallback}</span>`
+                  e.target.parentElement.innerHTML = `<span class="text-gray-600 text-xs sm:text-sm font-semibold text-center">${partner.fallback}</span>`
                 }}
               />
             </motion.div>

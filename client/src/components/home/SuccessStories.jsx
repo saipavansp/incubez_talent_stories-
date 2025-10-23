@@ -44,7 +44,7 @@ const SuccessStories = () => {
   }
 
   return (
-    <section id="success-stories" className="py-20 bg-white">
+    <section id="success-stories" className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="section-padding">
         {/* Section Header */}
         <motion.div
@@ -52,19 +52,19 @@ const SuccessStories = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Video <span className="text-incubez-red">Pitches</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Watch video pitches from founders and seekers looking for their perfect match.
           </p>
         </motion.div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-6xl mx-auto">
-          <div className="overflow-hidden rounded-2xl">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-0">
+          <div className="overflow-hidden rounded-xl sm:rounded-2xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -76,7 +76,7 @@ const SuccessStories = () => {
               >
                 <div className="relative">
                   {/* Video Preview */}
-                  <div className="relative h-96 md:h-[500px] bg-black rounded-xl overflow-hidden">
+                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] bg-black rounded-xl overflow-hidden">
                     {/* Video Thumbnail (First Frame) */}
                     <video
                       src={stories[currentIndex].videoUrl}
@@ -105,11 +105,11 @@ const SuccessStories = () => {
                     </button>
 
                     {/* Content Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-32">
-                      <h3 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white z-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent pt-20 sm:pt-24 md:pt-32">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 drop-shadow-lg">
                         {stories[currentIndex].company}
                       </h3>
-                      <p className="text-xl text-gray-100 drop-shadow-md">
+                      <p className="text-base sm:text-lg md:text-xl text-gray-100 drop-shadow-md">
                         {stories[currentIndex].title}
                       </p>
                     </div>
@@ -122,19 +122,19 @@ const SuccessStories = () => {
           {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-incubez-red hover:bg-red-700 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Previous story"
             type="button"
           >
-            <ChevronLeftIcon className="h-6 w-6 text-gray-700" />
+            <ChevronLeftIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-incubez-red hover:bg-red-700 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Next story"
             type="button"
           >
-            <ChevronRightIcon className="h-6 w-6 text-gray-700" />
+            <ChevronRightIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           </button>
 
           {/* Dots Indicator */}

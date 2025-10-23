@@ -115,9 +115,9 @@ const Header = () => {
             height: isMobileMenuOpen ? 'auto' : 0 
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          className="md:hidden overflow-hidden bg-white rounded-b-lg shadow-lg"
         >
-          <div className="pt-4 pb-3 space-y-2">
+          <div className="pt-4 pb-3 space-y-2 px-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

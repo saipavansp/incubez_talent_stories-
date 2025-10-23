@@ -45,15 +45,15 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 section-padding py-32 text-center">
+      <div className="relative z-10 section-padding py-20 sm:py-28 md:py-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto px-4"
         >
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight px-2">
             Connect with Your{' '}
             <span className="text-incubez-red">Perfect Match</span>
             <br />
@@ -65,7 +65,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto px-4"
           >
             Whether you're a founder seeking co-founders and key talent, or a professional 
             ready to join an exciting startup journey - find your perfect match today.
@@ -76,11 +76,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center mb-12"
+            className="flex justify-center mb-12 px-4"
           >
             <Link 
               to="/founder/pitch" 
-              className="btn-primary text-lg px-12 py-4 flex items-center justify-center gap-2 group text-xl"
+              className="btn-primary text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-3 sm:py-4 flex items-center justify-center gap-2 group w-full sm:w-auto max-w-sm"
             >
               Post Your Pitch
               <motion.span
@@ -118,19 +118,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 max-w-3xl mx-auto px-4"
           >
             <div className="text-center">
-              <h3 className="text-4xl font-bold text-incubez-red mb-2">500+</h3>
-              <p className="text-gray-300">Successful Matches</p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-incubez-red mb-2">500+</h3>
+              <p className="text-sm sm:text-base text-gray-300">Successful Matches</p>
             </div>
             <div className="text-center">
-              <h3 className="text-4xl font-bold text-incubez-red mb-2">1000+</h3>
-              <p className="text-gray-300">Active Founders</p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-incubez-red mb-2">1000+</h3>
+              <p className="text-sm sm:text-base text-gray-300">Active Founders</p>
             </div>
             <div className="text-center">
-              <h3 className="text-4xl font-bold text-incubez-red mb-2">12+</h3>
-              <p className="text-gray-300">Partner Companies</p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-incubez-red mb-2">12+</h3>
+              <p className="text-sm sm:text-base text-gray-300">Partner Companies</p>
             </div>
           </motion.div>
         </motion.div>

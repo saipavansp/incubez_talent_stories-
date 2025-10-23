@@ -42,7 +42,7 @@ const UserTypeSelection = () => {
   ]
 
   return (
-    <section id="get-started" className="py-20 bg-gray-50">
+    <section id="get-started" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="section-padding">
         {/* Section Header */}
         <motion.div
@@ -50,12 +50,12 @@ const UserTypeSelection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Get Started Today
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Choose your path and begin your journey to finding the perfect match
           </p>
         </motion.div>

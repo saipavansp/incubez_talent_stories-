@@ -4,19 +4,19 @@ import { motion } from 'framer-motion'
 const AboutPage = () => {
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
-      <div className="section-padding py-16">
+      <div className="section-padding py-12 sm:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-center px-4">
             About <span className="text-incubez-red">INCUBEZ</span>
           </h1>
           
-          <div className="prose prose-lg mx-auto">
-            <p className="text-xl text-gray-600 mb-8 text-center">
+          <div className="prose prose-lg mx-auto px-4">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 text-center">
               Connecting ambitious founders with exceptional talent through video-based matching
             </p>
             

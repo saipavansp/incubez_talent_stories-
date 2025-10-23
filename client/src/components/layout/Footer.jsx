@@ -33,10 +33,10 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/incubez' },
-    { name: 'Twitter', url: 'https://twitter.com/incubez' },
-    { name: 'Instagram', url: 'https://instagram.com/incubez' },
-    { name: 'YouTube', url: 'https://youtube.com/incubez' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/company/incubez-ott/' },
+    { name: 'Instagram', url: 'https://www.instagram.com/incubez.ott' },
+    { name: 'Website', url: 'https://Incubez.com' },
+    { name: 'Linktree', url: 'https://linktr.ee/incubez.ott' },
   ]
 
   return (

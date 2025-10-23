@@ -29,17 +29,17 @@ const PitchesPage = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
-      <div className="section-padding py-16">
+      <div className="section-padding py-12 sm:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-center px-4">
             Video <span className="text-incubez-red">Pitches</span>
           </h1>
           
-          <p className="text-xl text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 text-center max-w-2xl mx-auto px-4">
             Watch video pitches from founders and seekers looking for their perfect match.
           </p>
           
