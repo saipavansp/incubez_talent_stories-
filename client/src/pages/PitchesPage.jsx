@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { PlayIcon } from '@heroicons/react/24/solid'
 import VideoModal from '../components/common/VideoModal'
@@ -6,6 +6,11 @@ import VideoModal from '../components/common/VideoModal'
 const PitchesPage = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedVideo, setSelectedVideo] = useState(null)
+
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
   const pitches = [
     {
       id: 1,

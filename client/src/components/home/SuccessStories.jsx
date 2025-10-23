@@ -91,16 +91,17 @@ const SuccessStories = () => {
                     
                     {/* Play Button Overlay */}
                     <button 
-                      className="absolute inset-0 flex items-center justify-center group z-10"
+                      className="absolute inset-0 flex items-center justify-center group z-10 cursor-pointer active:scale-95"
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
+                        console.log('Play button clicked')
                         setIsVideoModalOpen(true)
                       }}
                       type="button"
                     >
-                      <div className="bg-incubez-red rounded-full p-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
-                        <PlayIcon className="h-16 w-16 text-white" />
+                      <div className="bg-incubez-red rounded-full p-4 sm:p-5 md:p-6 group-hover:scale-110 group-active:scale-95 transition-all duration-300 shadow-2xl">
+                        <PlayIcon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-white" />
                       </div>
                     </button>
 
@@ -165,6 +166,7 @@ const SuccessStories = () => {
         >
           <Link 
             to="/pitches"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="inline-flex items-center gap-2 text-incubez-red hover:text-red-700 font-medium group"
           >
             View All Pitches

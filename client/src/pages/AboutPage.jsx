@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const AboutPage = () => {
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       <div className="section-padding py-12 sm:py-16">
