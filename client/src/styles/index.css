@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 bg-white antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-incubez-red focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-incubez-black text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-incubez-red text-incubez-red px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-incubez-red hover:text-white focus:outline-none focus:ring-2 focus:ring-incubez-red focus:ring-offset-2;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-incubez-red focus:border-transparent transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-incubez-black to-incubez-red bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-incubez-red;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-incubez-red;
+}
+
+/* Form step indicator */
+.step-indicator {
+  @apply flex items-center justify-between w-full mb-8;
+}
+
+.step-item {
+  @apply flex items-center;
+}
+
+.step-number {
+  @apply w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300;
+}
+
+.step-number.active {
+  @apply bg-incubez-red text-white;
+}
+
+.step-number.completed {
+  @apply bg-green-500 text-white;
+}
+
+.step-number.inactive {
+  @apply bg-gray-300 text-gray-600;
+}
+
+.step-line {
+  @apply h-1 flex-1 mx-2 transition-all duration-300;
+}
+
+.step-line.completed {
+  @apply bg-green-500;
+}
+
+.step-line.active {
+  @apply bg-incubez-red;
+}
+
+.step-line.inactive {
+  @apply bg-gray-300;
+}
+
