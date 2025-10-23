@@ -56,7 +56,7 @@ const Header = () => {
             onClick={handleLogoClick}
           >
             <img 
-              src="/images/incubez-logo.png" 
+              src="/images/incubez-logo.svg" 
               alt="INCUBEZ Logo" 
               className="h-10 w-10 object-contain"
               onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found

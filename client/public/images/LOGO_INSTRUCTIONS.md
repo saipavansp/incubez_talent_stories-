@@ -2,25 +2,29 @@
 
 ## Required Logo File
 
-Place your INCUBEZ logo PNG file in this folder:
+Place your INCUBEZ logo in this folder:
 
 ```
-client/public/images/incubez-logo.png
+client/public/images/incubez-logo.svg   ← RECOMMENDED (if you have SVG)
+OR
+client/public/images/incubez-logo.png   ← Alternative
 ```
 
 ## Logo Specifications
 
-### Header Logo:
-- **Recommended Size**: 40px × 40px
+### ✅ SVG Format (RECOMMENDED - You have this!)
+- **Best Choice**: Crisp at any size, smallest file
+- **File Size**: Usually 2-10KB (very small!)
+- **Scalability**: Perfect at any resolution
+- **No size specification needed**: SVG scales perfectly
+- **Colors**: Works on both dark and light backgrounds
+- **Just drop your SVG file and it works!**
+
+### Alternative: PNG Format
+- **Size**: 40px × 40px (header) or 50px × 50px (footer)
 - **Format**: PNG with transparent background
 - **File Size**: Under 50KB
 - **Colors**: Should work on both dark and light backgrounds
-
-### Footer Logo:
-- **Recommended Size**: 50px × 50px  
-- **Format**: PNG with transparent background
-- **File Size**: Under 50KB
-- **Colors**: Should be visible on black background (white or red logo)
 
 ## Creating the Logo
 

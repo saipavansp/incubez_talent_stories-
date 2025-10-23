@@ -53,7 +53,7 @@ const Footer = () => {
             >
               <div className="flex items-center gap-3 mb-4">
                 <img 
-                  src="/images/incubez-logo.png" 
+                  src="/images/incubez-logo.svg" 
                   alt="INCUBEZ Logo" 
                   className="h-12 w-12 object-contain"
                   onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
