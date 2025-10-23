@@ -52,9 +52,15 @@ const Header = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="cursor-pointer"
+            className="cursor-pointer flex items-center gap-3"
             onClick={handleLogoClick}
           >
+            <img 
+              src="/images/incubez-logo.png" 
+              alt="INCUBEZ Logo" 
+              className="h-10 w-10 object-contain"
+              onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
+            />
             <h1 className="text-2xl font-bold">
               <span className={isDarkTheme ? "text-incubez-black" : "text-white"}>INCUBEZ</span>
               <span className="text-incubez-red"> Talent</span>

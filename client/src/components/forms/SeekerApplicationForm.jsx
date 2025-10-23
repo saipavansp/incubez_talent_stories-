@@ -114,6 +114,32 @@ const SeekerApplicationForm = () => {
     try {
       setIsSubmitting(true)
       
+      // For now, bypass payment and go directly to success page
+      // TODO: Integrate real payment gateway when ready
+      
+      // Generate mock application ID
+      const applicationId = `INC-SKR-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9999)).padStart(4, '0')}`
+      
+      // Simulate submission delay
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      // Clear saved form data
+      localStorage.removeItem('seekerApplicationFormData')
+      
+      // Show success message
+      toast.success('Application submitted successfully!')
+      
+      // Redirect to success page
+      navigate('/payment/success', { 
+        state: { 
+          applicationId: applicationId,
+          amount: 499,
+          transactionId: `TXN${Date.now()}`,
+          type: 'seeker'
+        }
+      })
+
+      /* UNCOMMENT THIS WHEN PAYMENT IS READY
       // Prepare form data for submission
       const formDataToSubmit = new FormData()
       
@@ -139,10 +165,7 @@ const SeekerApplicationForm = () => {
       })
 
       if (response.data.success) {
-        // Clear saved form data
         localStorage.removeItem('seekerApplicationFormData')
-        
-        // Redirect to payment page
         navigate('/payment', { 
           state: { 
             orderId: response.data.orderId,
@@ -151,6 +174,7 @@ const SeekerApplicationForm = () => {
           }
         })
       }
+      */
     } catch (error) {
       console.error('Submission error:', error)
       toast.error(error.response?.data?.message || 'Failed to submit application. Please try again.')

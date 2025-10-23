@@ -51,10 +51,18 @@ const Footer = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl font-bold mb-4">
-                <span className="text-white">INCUBEZ</span>
-                <span className="text-incubez-red"> Talent</span>
-              </h2>
+              <div className="flex items-center gap-3 mb-4">
+                <img 
+                  src="/images/incubez-logo.png" 
+                  alt="INCUBEZ Logo" 
+                  className="h-12 w-12 object-contain"
+                  onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
+                />
+                <h2 className="text-2xl font-bold">
+                  <span className="text-white">INCUBEZ</span>
+                  <span className="text-incubez-red"> Talent</span>
+                </h2>
+              </div>
               <p className="text-gray-400 mb-6">
                 Connecting startup founders with exceptional talent through video-based pitches. 
                 Find your next co-founder, EIR, or key team member.
@@ -165,7 +173,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {currentYear} INCUBEZ. All rights reserved.
+              © {currentYear} Webkraft Technologies. All rights reserved.
             </p>
             
             {/* Social Links */}
