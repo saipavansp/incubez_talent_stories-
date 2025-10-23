@@ -129,7 +129,7 @@ const HeroSection = () => {
               <p className="text-gray-300">Active Founders</p>
             </div>
             <div className="text-center">
-              <h3 className="text-4xl font-bold text-incubez-red mb-2">50+</h3>
+              <h3 className="text-4xl font-bold text-incubez-red mb-2">12+</h3>
               <p className="text-gray-300">Partner Companies</p>
             </div>
           </motion.div>

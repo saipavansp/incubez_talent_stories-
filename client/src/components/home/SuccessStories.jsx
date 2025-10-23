@@ -92,7 +92,12 @@ const SuccessStories = () => {
                     {/* Play Button Overlay */}
                     <button 
                       className="absolute inset-0 flex items-center justify-center group z-10"
-                      onClick={() => setIsVideoModalOpen(true)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        setIsVideoModalOpen(true)
+                      }}
+                      type="button"
                     >
                       <div className="bg-incubez-red rounded-full p-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
                         <PlayIcon className="h-16 w-16 text-white" />
@@ -117,15 +122,17 @@ const SuccessStories = () => {
           {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Previous story"
+            type="button"
           >
             <ChevronLeftIcon className="h-6 w-6 text-gray-700" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Next story"
+            type="button"
           >
             <ChevronRightIcon className="h-6 w-6 text-gray-700" />
           </button>
@@ -136,6 +143,7 @@ const SuccessStories = () => {
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
+                type="button"
                 className={`h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
                     ? 'w-12 bg-incubez-red' 

@@ -2,20 +2,19 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 const Partners = () => {
-  // Partner logos - in a real app, these would be actual company logos
   const partners = [
-    { id: 1, name: 'TechCorp', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=TechCorp' },
-    { id: 2, name: 'InnovateLab', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=InnovateLab' },
-    { id: 3, name: 'StartupHub', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=StartupHub' },
-    { id: 4, name: 'VentureX', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=VentureX' },
-    { id: 5, name: 'ScaleUp', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=ScaleUp' },
-    { id: 6, name: 'FoundersClub', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=FoundersClub' },
-    { id: 7, name: 'NextGen', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=NextGen' },
-    { id: 8, name: 'Accelerate', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=Accelerate' },
-    { id: 9, name: 'GrowthLabs', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=GrowthLabs' },
-    { id: 10, name: 'FutureTech', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=FutureTech' },
-    { id: 11, name: 'Pioneer', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=Pioneer' },
-    { id: 12, name: 'Momentum', logo: 'https://via.placeholder.com/200x80/f3f4f6/6b7280?text=Momentum' },
+    { id: 1, name: 'The August Fest', logo: '/images/partners/the-august-fest.png', fallback: 'The August Fest' },
+    { id: 2, name: 'TiE Hyderabad', logo: '/images/partners/tie-hyderabad.png', fallback: 'TiE Hyderabad' },
+    { id: 3, name: 'TiE50', logo: '/images/partners/tie50.png', fallback: 'TiE50' },
+    { id: 4, name: 'Enrission India Capital', logo: '/images/partners/enrission-india-capital.png', fallback: 'Enrission India Capital' },
+    { id: 5, name: 'T-Hub', logo: '/images/partners/t-hub.png', fallback: 'T-Hub' },
+    { id: 6, name: 'WE Hub', logo: '/images/partners/we-hub.png', fallback: 'WE Hub' },
+    { id: 7, name: 'AIC BIMTECH', logo: '/images/partners/aic-bimtech.png', fallback: 'AIC BIMTECH' },
+    { id: 8, name: 'Draper Startup House', logo: '/images/partners/draper-startup-house.png', fallback: 'Draper Startup House' },
+    { id: 9, name: 'AIRA', logo: '/images/partners/aira.png', fallback: 'AIRA' },
+    { id: 10, name: 'CoKarma', logo: '/images/partners/cokarma.png', fallback: 'CoKarma' },
+    { id: 11, name: 'Early Seed Ventures', logo: '/images/partners/early-seed-ventures.png', fallback: 'Early Seed Ventures' },
+    { id: 12, name: 'Venture Wolf', logo: '/images/partners/venture-wolf.png', fallback: 'Venture Wolf' },
   ]
 
   return (
@@ -53,6 +52,10 @@ const Partners = () => {
                   src={partner.logo}
                   alt={partner.name}
                   className="max-h-12 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  onError={(e) => {
+                    e.target.style.display = 'none'
+                    e.target.parentElement.innerHTML = `<span class="text-gray-600 text-xs font-semibold text-center group-hover:text-incubez-red transition-colors">${partner.fallback}</span>`
+                  }}
                 />
               </div>
             </motion.div>
@@ -69,7 +72,7 @@ const Partners = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-white text-center">
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-2">50+</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-2">12+</h3>
               <p className="text-white/80">Partner Companies</p>
             </div>
             <div>
