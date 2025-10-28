@@ -95,20 +95,17 @@ Value: 587
 
 ```
 Variable: EMAIL_USER
-Value: your-gmail@gmail.com
-(Use your actual Gmail address)
+Value: incubez.ott@gmail.com
 ```
 
 ```
 Variable: EMAIL_PASS
-Value: your-16-character-app-password
-(NOT your Gmail password! Use app password from Google Account settings)
+Value: kvildtbqwptoudlv
 ```
 
 ```
 Variable: ADMIN_EMAIL
-Value: your-gmail@gmail.com
-(Same as EMAIL_USER or different admin email)
+Value: incubez.ott@gmail.com
 ```
 
 ---
@@ -128,7 +125,6 @@ Value: true
 ```
 Variable: USE_EMAIL_NOTIFICATIONS
 Value: true
-(Set to false if you haven't set up Gmail yet)
 ```
 
 ---
@@ -162,9 +158,9 @@ Copy this checklist and check off as you add each one:
 - [ ] GOOGLE_SHEETS_ID = 1_a4okLiH-3LB82I5PBo8fl9RFeRHZ7Fc21LRoBAKiyg
 - [ ] EMAIL_HOST = smtp.gmail.com
 - [ ] EMAIL_PORT = 587
-- [ ] EMAIL_USER = your-gmail@gmail.com
-- [ ] EMAIL_PASS = your-app-password
-- [ ] ADMIN_EMAIL = your-gmail@gmail.com
+- [ ] EMAIL_USER = incubez.ott@gmail.com
+- [ ] EMAIL_PASS = kvildtbqwptoudlv
+- [ ] ADMIN_EMAIL = incubez.ott@gmail.com
 - [ ] USE_GOOGLE_DRIVE = true
 - [ ] USE_GOOGLE_SHEETS = true
 - [ ] USE_EMAIL_NOTIFICATIONS = true (or false if Gmail not set up)

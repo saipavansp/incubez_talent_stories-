@@ -56,7 +56,9 @@ export const sendConfirmationEmail = async (data, type) => {
     <div class="content">
       <p>Dear <strong>${type === 'founder' ? data.founderName : data.fullName}</strong>,</p>
       
-      <p>Thank you for submitting your ${type === 'founder' ? 'job pitch' : 'application'} to INCUBEZ Talent Stories!</p>
+      <p>🎉 Thank you for submitting your ${type === 'founder' ? 'job pitch' : 'application'} to <strong>INCUBEZ Talent Stories</strong>!</p>
+      
+      <p>We're excited to help you ${type === 'founder' ? 'find the perfect co-founder or team member' : 'connect with innovative startups'} through our video-based platform.</p>
       
       <div class="details-box">
         <h3 style="margin-top: 0; color: #e14f46;">Application Details</h3>
@@ -78,12 +80,13 @@ export const sendConfirmationEmail = async (data, type) => {
         </div>
       </div>
       
-      <h3>What happens next?</h3>
+      <h3>🚀 What happens next?</h3>
       <ul>
-        <li>Our team will review your submission within 24-48 hours</li>
-        <li>Your video ${type === 'founder' ? 'pitch' : 'application'} will be made available to relevant matches</li>
-        <li>You'll be notified once your application is approved</li>
-        <li>${type === 'founder' ? 'Qualified candidates will be able to view your pitch and apply' : 'Founders looking for talent like you will be notified'}</li>
+        <li>✅ <strong>Your submission is now live!</strong> ${type === 'founder' ? 'Seekers can view your pitch' : 'Founders can see your application'}</li>
+        <li>📋 Our team will review your submission within 24-48 hours</li>
+        <li>🎯 Your video will be made available to relevant matches</li>
+        <li>📧 You'll be contacted directly by interested ${type === 'founder' ? 'candidates' : 'founders'}</li>
+        <li>⭐ ${type === 'founder' ? 'Start receiving applications from qualified talent' : 'Get ready to hear from exciting startups!'}</li>
       </ul>
       
       <div style="text-align: center;">
@@ -92,10 +95,15 @@ export const sendConfirmationEmail = async (data, type) => {
         </a>
       </div>
       
-      <p style="margin-top: 30px; padding: 15px; background: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
-        <strong>📋 Keep this email for your records.</strong><br>
-        Your Application ID: <strong>${data.applicationId}</strong>
-      </p>
+      <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 10px; border-left: 4px solid #f59e0b; text-align: center;">
+        <h3 style="margin: 0 0 10px 0; color: #92400e;">📋 Important - Save This Information</h3>
+        <p style="margin: 0; font-size: 18px;">
+          Your Application ID: <strong style="color: #e14f46; font-size: 20px;">${data.applicationId}</strong>
+        </p>
+        <p style="margin: 10px 0 0 0; font-size: 14px; color: #92400e;">
+          Keep this email for your records and reference
+        </p>
+      </div>
     </div>
     
     <div class="footer">
@@ -109,6 +117,11 @@ export const sendConfirmationEmail = async (data, type) => {
       <p style="margin-top: 15px; font-size: 12px;">
         © 2025 Webkraft Technologies. All rights reserved.
       </p>
+      <p style="margin-top: 10px; font-size: 12px;">
+        🌐 <a href="https://Incubez.com" style="color: #e14f46;">Incubez.com</a> | 
+        📱 <a href="https://linktr.ee/incubez.ott" style="color: #e14f46;">All Links</a> | 
+        📸 <a href="https://www.instagram.com/incubez.ott" style="color: #e14f46;">Instagram</a>
+      </p>
     </div>
   </div>
 </body>
@@ -116,10 +129,11 @@ export const sendConfirmationEmail = async (data, type) => {
     `
 
     const mailOptions = {
-      from: `"INCUBEZ Talent" <${process.env.EMAIL_USER}>`,
+      from: `"INCUBEZ Talent Stories" <${process.env.EMAIL_USER}>`,
       to: data.email,
       subject: subject,
       html: htmlContent,
+      replyTo: 'talent@incubez.com',
     }
 
     await transporter.sendMail(mailOptions)

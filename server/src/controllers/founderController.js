@@ -70,8 +70,7 @@ export const submitPitch = async (req, res) => {
     if (process.env.USE_EMAIL_NOTIFICATIONS === 'true') {
       console.log('📧 Sending confirmation email...')
       await sendConfirmationEmail(submissionData, 'founder')
-      await sendAdminNotification(submissionData, 'founder')
-      console.log('✅ Emails sent')
+      console.log('✅ Confirmation email sent')
     }
 
     // Save to mock database
