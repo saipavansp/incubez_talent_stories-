@@ -176,7 +176,7 @@ const HeroSection = () => {
               </svg>
             </button>
             <iframe
-              src="https://www.youtube.com/embed/IwTnncugWM4"
+              src="https://www.youtube.com/embed/P-tbbIyrTS8"
               title="How INCUBEZ Works"
               className="w-full h-full"
               frameBorder="0"
