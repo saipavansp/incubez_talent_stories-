@@ -1,5 +1,6 @@
 import { google } from 'googleapis'
 import stream from 'stream'
+import fs from 'fs'
 import { promisify } from 'util'
 
 const pipeline = promisify(stream.pipeline)
@@ -23,14 +24,14 @@ const initializeDrive = () => {
 }
 
 /**
- * Upload video to Google Drive
- * @param {Buffer} fileBuffer - Video file buffer
+ * Upload video to Google Drive from file path (DISK storage - prevents RAM overflow)
+ * @param {string} filePath - Path to video file on disk
  * @param {string} fileName - File name with format: firstname-lastname_INC-XXX-2025-0001.mp4
  * @param {string} mimeType - File MIME type (e.g., 'video/mp4')
  * @param {string} folderType - 'founder' or 'seeker'
  * @returns {Object} { fileId, webViewLink, webContentLink }
  */
-export const uploadVideoToDrive = async (fileBuffer, fileName, mimeType, folderType) => {
+export const uploadVideoToDrive = async (filePath, fileName, mimeType, folderType) => {
   try {
     const drive = initializeDrive()
     
@@ -41,9 +42,8 @@ export const uploadVideoToDrive = async (fileBuffer, fileName, mimeType, folderT
     const subfolderName = folderType === 'founder' ? 'Founders_Pitches' : 'Seekers_Applications'
     const subfolderId = await getOrCreateSubfolder(drive, parentFolderId, subfolderName)
 
-    // Create readable stream from buffer
-    const bufferStream = new stream.PassThrough()
-    bufferStream.end(fileBuffer)
+    // Create readable stream from file (LOW MEMORY USAGE)
+    const fileStream = fs.createReadStream(filePath)
 
     // File metadata
     const fileMetadata = {
@@ -53,10 +53,10 @@ export const uploadVideoToDrive = async (fileBuffer, fileName, mimeType, folderT
 
     const media = {
       mimeType: mimeType,
-      body: bufferStream,
+      body: fileStream,
     }
 
-    console.log(`Uploading ${fileName} to Google Drive...`)
+    console.log(`📤 Uploading ${fileName} to Google Drive...`)
 
     // Upload file
     const response = await drive.files.create({
@@ -76,13 +76,32 @@ export const uploadVideoToDrive = async (fileBuffer, fileName, mimeType, folderT
 
     console.log(`✅ Video uploaded successfully! File ID: ${response.data.id}`)
 
+    // Delete temporary file after successful upload
+    try {
+      fs.unlinkSync(filePath)
+      console.log(`🗑️ Temporary file deleted: ${filePath}`)
+    } catch (unlinkError) {
+      console.warn(`⚠️ Could not delete temp file: ${filePath}`, unlinkError.message)
+    }
+
     return {
       fileId: response.data.id,
       webViewLink: response.data.webViewLink,
       webContentLink: response.data.webContentLink,
     }
   } catch (error) {
-    console.error('Error uploading to Google Drive:', error)
+    console.error('❌ Error uploading to Google Drive:', error)
+    
+    // Try to delete temp file even on error
+    try {
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath)
+        console.log(`🗑️ Temporary file deleted after error: ${filePath}`)
+      }
+    } catch (unlinkError) {
+      console.warn(`⚠️ Could not delete temp file after error: ${filePath}`)
+    }
+    
     throw new Error('Failed to upload video to Google Drive: ' + error.message)
   }
 }

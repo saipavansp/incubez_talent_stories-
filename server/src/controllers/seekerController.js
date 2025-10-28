@@ -26,7 +26,7 @@ export const submitApplication = async (req, res) => {
       const fileName = generateVideoFileName(applicationData.fullName, applicationId)
       
       const driveResult = await uploadVideoToDrive(
-        videoFile.buffer,
+        videoFile.path, // Use file path instead of buffer (LOW MEMORY)
         fileName,
         videoFile.mimetype,
         'seeker'
