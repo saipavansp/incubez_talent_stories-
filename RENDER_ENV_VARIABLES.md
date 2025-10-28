@@ -27,8 +27,7 @@ Value: production
 
 ```
 Variable: CLIENT_URL
-Value: https://your-frontend-url.onrender.com
-(Update after frontend is deployed!)
+Value: https://incubez-talent-stories-4eyw.onrender.com
 ```
 
 ---
@@ -193,14 +192,20 @@ When pasting the private key in Render:
 
 ---
 
-## ✅ **Frontend Environment Variable**
+## ✅ **Frontend Environment Variables** ⭐ IMPORTANT!
 
-Don't forget to set this in **Frontend Service**:
+### **For Render Static Site (Frontend):**
+
+Go to your **Frontend Service** on Render:
+1. Click on **"Environment"** tab
+2. Add this environment variable:
 
 ```
 Variable: VITE_API_URL
-Value: https://your-backend-url.onrender.com
+Value: https://incubez-talent-stories.onrender.com
 ```
+
+**This tells your frontend where to send API requests!**
 
 ---
 
@@ -216,18 +221,17 @@ Value: https://your-backend-url.onrender.com
 2. ✅ Names video: `firstname-lastname_INC-FND-2025-0001.mp4`
 3. ✅ Saves to correct folder (Founders/Seekers)
 4. ✅ Saves all data to Google Sheets
-5. ✅ Sends confirmation email to user
-6. ✅ Sends notification email to admin
-7. ✅ Returns success to frontend
+5. ✅ Sends beautiful confirmation email to user
+6. ✅ Returns success to frontend
 
 **User sees:**
 ✅ Success page with Application ID
-✅ Email confirmation in inbox
+✅ Beautiful email confirmation in inbox with all details
 
-**Admin gets:**
-✅ Notification email with video link
-✅ Data in Google Sheets
-✅ Video in Google Drive
+**You (admin) can access:**
+✅ All data in Google Sheets (organized, live)
+✅ All videos in Google Drive (properly named)
+✅ No spam emails - check Sheets for new submissions!
 
 ---
 
