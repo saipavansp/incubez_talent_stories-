@@ -1,6 +1,9 @@
 import { v4 as uuidv4 } from 'uuid'
+import { uploadVideoToDrive, generateVideoFileName } from '../services/googleDriveService.js'
+import { saveFounderSubmission } from '../services/googleSheetsService.js'
+import { sendConfirmationEmail, sendAdminNotification } from '../services/emailService.js'
 
-// Mock database (replace with actual MongoDB models)
+// Mock database for tracking (optional if using Sheets)
 const pitches = []
 
 export const submitPitch = async (req, res) => {
@@ -8,33 +11,85 @@ export const submitPitch = async (req, res) => {
     const pitchData = req.body
     const videoFile = req.file
 
+    console.log('📝 Founder pitch submission received...')
+
     // Generate unique application ID
     const applicationId = `INC-FND-${new Date().getFullYear()}-${String(pitches.length + 1).padStart(4, '0')}`
+    
+    let videoDriveLink = null
+    let videoDriveId = null
 
-    // Create pitch object
-    const pitch = {
-      id: uuidv4(),
-      applicationId,
-      ...pitchData,
-      videoUrl: videoFile ? `/uploads/${videoFile.filename}` : null,
-      status: 'pending_payment',
-      createdAt: new Date(),
-      updatedAt: new Date()
+    // Upload video to Google Drive if enabled
+    if (videoFile && process.env.USE_GOOGLE_DRIVE === 'true') {
+      console.log('🎥 Uploading video to Google Drive...')
+      
+      const fileName = generateVideoFileName(pitchData.founderName, applicationId)
+      
+      const driveResult = await uploadVideoToDrive(
+        videoFile.buffer,
+        fileName,
+        videoFile.mimetype,
+        'founder'
+      )
+      
+      videoDriveLink = driveResult.webViewLink
+      videoDriveId = driveResult.fileId
+      
+      console.log('✅ Video uploaded to Drive:', fileName)
     }
 
-    // Save to database (mock)
-    pitches.push(pitch)
+    // Prepare data for Sheets
+    const submissionData = {
+      applicationId,
+      founderName: pitchData.founderName,
+      email: pitchData.email,
+      phone: pitchData.phone,
+      linkedinUrl: pitchData.linkedinUrl,
+      startupName: pitchData.startupName,
+      domain: pitchData.domain,
+      stage: pitchData.stage,
+      jobTitle: pitchData.jobTitle,
+      roleType: pitchData.roleType,
+      experienceLevel: pitchData.experienceLevel,
+      locationPreference: pitchData.locationPreference,
+      compensationType: pitchData.compensationType,
+      videoDriveLink,
+      videoDriveId,
+      couponCode: pitchData.couponCode || '',
+      amountPaid: pitchData.amountPaid || 0,
+    }
 
-    // Return response for payment
+    // Save to Google Sheets if enabled
+    if (process.env.USE_GOOGLE_SHEETS === 'true') {
+      console.log('📊 Saving to Google Sheets...')
+      await saveFounderSubmission(submissionData)
+      console.log('✅ Data saved to Google Sheets')
+    }
+
+    // Send confirmation email if enabled
+    if (process.env.USE_EMAIL_NOTIFICATIONS === 'true') {
+      console.log('📧 Sending confirmation email...')
+      await sendConfirmationEmail(submissionData, 'founder')
+      await sendAdminNotification(submissionData, 'founder')
+      console.log('✅ Emails sent')
+    }
+
+    // Save to mock database
+    pitches.push({
+      id: uuidv4(),
+      ...submissionData,
+      createdAt: new Date(),
+    })
+
+    // Return success response
     res.json({
       success: true,
       applicationId,
-      orderId: `order_${uuidv4()}`,
-      amount: 999,
-      message: 'Pitch submitted successfully. Please complete payment.'
+      videoDriveLink,
+      message: 'Pitch submitted successfully!'
     })
   } catch (error) {
-    console.error('Error submitting pitch:', error)
+    console.error('❌ Error submitting pitch:', error)
     res.status(500).json({
       success: false,
       message: 'Failed to submit pitch',

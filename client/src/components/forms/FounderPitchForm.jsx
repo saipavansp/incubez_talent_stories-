@@ -136,33 +136,54 @@ const FounderPitchForm = () => {
 
       setIsSubmitting(true)
       
-      // TODO: When Google Drive & Sheets integration is ready:
-      // 1. Upload video to Google Drive
-      // 2. Save form data + video link to Google Sheets
-      // 3. Send confirmation email
+      // Prepare form data for submission
+      const formDataToSubmit = new FormData()
       
-      // For now, simulate submission
-      const applicationId = `INC-FND-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9999)).padStart(4, '0')}`
-      
-      // Simulate submission delay
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // Clear saved form data
-      localStorage.removeItem('founderPitchFormData')
-      
-      // Show success message
-      toast.success('Pitch submitted successfully!')
-      
-      // Redirect to success page
-      navigate('/payment/success', { 
-        state: { 
-          applicationId: applicationId,
-          amount: finalAmount,
-          transactionId: `TXN${Date.now()}`,
-          type: 'founder',
-          couponApplied: couponApplied
+      // Add all form fields
+      Object.keys(data).forEach(key => {
+        if (Array.isArray(data[key])) {
+          formDataToSubmit.append(key, JSON.stringify(data[key]))
+        } else if (data[key] !== undefined && data[key] !== null) {
+          formDataToSubmit.append(key, data[key])
         }
       })
+      
+      // Add video file
+      if (videoFile) {
+        formDataToSubmit.append('video', videoFile)
+      }
+
+      // Add payment details
+      formDataToSubmit.append('couponCode', couponCode)
+      formDataToSubmit.append('amountPaid', finalAmount)
+
+      // Submit to API
+      const response = await axios.post(`${API_URL}/api/founders/pitch`, formDataToSubmit, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        timeout: 300000, // 5 minutes for large video uploads
+      })
+
+      if (response.data.success) {
+        // Clear saved form data
+        localStorage.removeItem('founderPitchFormData')
+        
+        // Show success message
+        toast.success('Pitch submitted successfully!')
+        
+        // Redirect to success page
+        navigate('/payment/success', { 
+          state: { 
+            applicationId: response.data.applicationId,
+            amount: finalAmount,
+            transactionId: `TXN${Date.now()}`,
+            type: 'founder',
+            couponApplied: couponApplied,
+            videoDriveLink: response.data.videoDriveLink
+          }
+        })
+      }
 
       /* UNCOMMENT THIS WHEN PAYMENT IS READY
       // Prepare form data for submission
