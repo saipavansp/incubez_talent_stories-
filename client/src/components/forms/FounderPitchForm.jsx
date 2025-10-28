@@ -223,7 +223,41 @@ const FounderPitchForm = () => {
       */
     } catch (error) {
       console.error('Submission error:', error)
-      toast.error(error.response?.data?.message || 'Failed to submit pitch. Please try again.')
+      
+      // Handle specific error types
+      if (error.response?.data?.message) {
+        // Show server error message
+        toast.error(error.response.data.message, {
+          duration: 6000,
+          style: {
+            maxWidth: '500px',
+          }
+        })
+        
+        // Show additional details if available
+        if (error.response.data.details) {
+          setTimeout(() => {
+            toast(error.response.data.details, {
+              duration: 5000,
+              icon: '💡',
+            })
+          }, 500)
+        }
+        
+        // Show tip if available
+        if (error.response.data.tip) {
+          setTimeout(() => {
+            toast(error.response.data.tip, {
+              duration: 5000,
+              icon: '🎬',
+            })
+          }, 1000)
+        }
+      } else if (error.code === 'ERR_NETWORK') {
+        toast.error('Network error. Please check your connection and try again.')
+      } else {
+        toast.error('Failed to submit pitch. Please try again.')
+      }
     } finally {
       setIsSubmitting(false)
     }
