@@ -69,6 +69,10 @@ const PitchesPage = () => {
                     preload="metadata"
                     muted
                     playsInline
+                    onError={(e) => {
+                      // Fallback if thumbnail not found
+                      e.target.removeAttribute('poster')
+                    }}
                   />
                   
                   {/* Dark Overlay */}

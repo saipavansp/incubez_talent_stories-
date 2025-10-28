@@ -175,18 +175,14 @@ const HeroSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <video
-              src="/videos/how-it-works.mp4"
+            <iframe
+              src="https://www.youtube.com/embed/IwTnncugWM4"
+              title="How INCUBEZ Works"
               className="w-full h-full"
-              controls
-              autoPlay
-              controlsList="nodownload"
-              onContextMenu={(e) => e.preventDefault()}
-              playsInline
-            >
-              <source src="/videos/how-it-works.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </motion.div>
         </motion.div>
       )}
