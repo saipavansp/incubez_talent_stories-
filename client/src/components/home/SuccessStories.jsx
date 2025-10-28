@@ -13,19 +13,22 @@ const SuccessStories = () => {
       id: 1,
       title: "Looking for Founder's Office Role",
       company: 'Chahath',
-      videoUrl: "/videos/chahath - founder's office Role.mp4"
+      videoUrl: "/videos/chahath - founder's office Role.mp4",
+      thumbnail: "/images/thumbnails/chahath-thumbnail.jpg"
     },
     {
       id: 2,
       title: 'Looking for Co-Founder',
       company: 'Pinkwellness',
-      videoUrl: '/videos/pinkwellness seeking co founder.mp4'
+      videoUrl: '/videos/pinkwellness seeking co founder.mp4',
+      thumbnail: "/images/thumbnails/pinkwellness-thumbnail.jpg"
     },
     {
       id: 3,
       title: "Looking for Founder's Office Role",
       company: 'Startup',
-      videoUrl: "/videos/Founder's office Role.mp4"
+      videoUrl: "/videos/Founder's office Role.mp4",
+      thumbnail: "/images/thumbnails/startup-thumbnail.jpg"
     }
   ]
 
@@ -80,6 +83,7 @@ const SuccessStories = () => {
                     {/* Video Thumbnail (First Frame) */}
                     <video
                       src={stories[currentIndex].videoUrl}
+                      poster={stories[currentIndex].thumbnail}
                       className="w-full h-full object-contain"
                       preload="metadata"
                       muted

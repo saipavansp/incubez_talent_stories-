@@ -44,6 +44,9 @@ Thumbs.db
 server/uploads/*
 !server/uploads/.gitkeep
 
+# Large video files (too big for GitHub)
+client/public/videos/how-it-works.mp4
+
 # Testing
 coverage/
 .nyc_output/

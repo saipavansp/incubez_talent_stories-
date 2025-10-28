@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { PlayIcon } from '@heroicons/react/24/solid'
-import VideoModal from '../common/VideoModal'
 
 const HeroSection = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
@@ -152,13 +151,41 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      {/* Video Modal */}
-      <VideoModal
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-        videoUrl="/videos/how-it-works.mp4"
-        title="How INCUBEZ Works"
-      />
+      {/* How It Works Video Modal */}
+      {isVideoModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+          onClick={() => setIsVideoModalOpen(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.9 }}
+            className="relative max-w-4xl w-full aspect-video bg-black rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-incubez-red text-white rounded-full p-3 hover:bg-red-700 transition-all shadow-lg"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <iframe
+              src="https://www.youtube.com/embed/IwTnncugWM4"
+              title="How INCUBEZ Works"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   )
 }
