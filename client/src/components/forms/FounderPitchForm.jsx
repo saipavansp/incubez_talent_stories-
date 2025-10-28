@@ -15,6 +15,10 @@ const FounderPitchForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [videoFile, setVideoFile] = useState(null)
   const [formData, setFormData] = useState({})
+  const [couponCode, setCouponCode] = useState('')
+  const [couponApplied, setCouponApplied] = useState(false)
+  const [couponError, setCouponError] = useState('')
+  const [finalAmount, setFinalAmount] = useState(999)
   
   const { register, handleSubmit, control, watch, formState: { errors }, trigger } = useForm({
     mode: 'onChange'
@@ -108,14 +112,36 @@ const FounderPitchForm = () => {
     setCurrentStep(currentStep - 1)
   }
 
+  const handleApplyCoupon = () => {
+    if (couponCode.toUpperCase() === 'FNDRMET') {
+      setCouponApplied(true)
+      setCouponError('')
+      setFinalAmount(0) // Free with coupon
+      toast.success('Coupon applied successfully! Amount: ₹0')
+    } else {
+      setCouponApplied(false)
+      setCouponError('Invalid coupon code')
+      setFinalAmount(999)
+      toast.error('Invalid coupon code')
+    }
+  }
+
   const onSubmit = async (data) => {
     try {
+      // Check if coupon is applied
+      if (!couponApplied) {
+        toast.error('Please apply a valid coupon code to continue')
+        return
+      }
+
       setIsSubmitting(true)
       
-      // For now, bypass payment and go directly to success page
-      // TODO: Integrate real payment gateway when ready
+      // TODO: When Google Drive & Sheets integration is ready:
+      // 1. Upload video to Google Drive
+      // 2. Save form data + video link to Google Sheets
+      // 3. Send confirmation email
       
-      // Generate mock application ID
+      // For now, simulate submission
       const applicationId = `INC-FND-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9999)).padStart(4, '0')}`
       
       // Simulate submission delay
@@ -131,9 +157,10 @@ const FounderPitchForm = () => {
       navigate('/payment/success', { 
         state: { 
           applicationId: applicationId,
-          amount: 999,
+          amount: finalAmount,
           transactionId: `TXN${Date.now()}`,
-          type: 'founder'
+          type: 'founder',
+          couponApplied: couponApplied
         }
       })
 
@@ -632,13 +659,74 @@ const FounderPitchForm = () => {
               </div>
             </div>
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <p className="text-sm text-yellow-800">
-                <strong>Note:</strong> After submission, you'll be redirected to complete the payment of ₹999 to publish your pitch.
+            {/* Pricing & Coupon Section */}
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-200 rounded-lg p-6">
+              <h4 className="font-semibold text-lg mb-4">Payment Details</h4>
+              
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-gray-700">Original Amount:</span>
+                <span className="text-2xl font-bold text-gray-900">₹999</span>
+              </div>
+
+              {couponApplied && (
+                <div className="flex items-center justify-between mb-4 text-green-600">
+                  <span>Discount (Coupon Applied):</span>
+                  <span className="text-xl font-bold">-₹999</span>
+                </div>
+              )}
+
+              <div className="border-t-2 border-gray-300 pt-4 mb-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-semibold">Final Amount:</span>
+                  <span className="text-3xl font-bold text-incubez-red">
+                    ₹{finalAmount}
+                  </span>
+                </div>
+              </div>
+
+              {/* Coupon Code Input */}
+              <div className="space-y-3">
+                <label className="block text-sm font-medium text-gray-700">
+                  Have a Coupon Code?
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={couponCode}
+                    onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                    placeholder="Enter coupon code"
+                    disabled={couponApplied}
+                    className={`input-field flex-1 ${couponApplied ? 'bg-green-50 border-green-500' : ''}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleApplyCoupon}
+                    disabled={couponApplied || !couponCode}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                      couponApplied 
+                        ? 'bg-green-500 text-white cursor-not-allowed' 
+                        : 'bg-incubez-red text-white hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed'
+                    }`}
+                  >
+                    {couponApplied ? '✓ Applied' : 'Apply'}
+                  </button>
+                </div>
+                {couponError && <p className="text-red-500 text-sm">{couponError}</p>}
+                {couponApplied && (
+                  <p className="text-green-600 text-sm font-medium">
+                    ✓ Coupon "FNDRMET" applied successfully!
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+              <p className="text-sm text-blue-800">
+                <strong>Note:</strong> Your video and details will be saved to our system after submission.
               </p>
             </div>
 
-            <div className="flex items-start">
+            <div className="flex items-start mt-4">
               <input
                 type="checkbox"
                 {...register('termsAccepted', { required: 'You must accept the terms and conditions' })}
@@ -706,10 +794,10 @@ const FounderPitchForm = () => {
               ) : (
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !couponApplied}
                   className="btn-primary ml-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit & Pay'}
+                  {isSubmitting ? 'Submitting...' : couponApplied ? 'Submit Application' : 'Apply Coupon First'}
                 </button>
               )}
             </div>

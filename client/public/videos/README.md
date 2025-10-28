@@ -5,9 +5,14 @@
 Simply place your MP4 video files in this folder.
 
 ### Current Videos:
+
+#### Pitch Videos:
 - `pinkwellness seeking co founder.mp4`
 - `Founder's office Role.mp4`
 - `chahath - founder's office Role.mp4`
+
+#### Explainer Video:
+- `how-it-works.mp4` - Explains how INCUBEZ platform works (shown in hero section)
 
 ---
 
