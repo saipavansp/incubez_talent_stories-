@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import StepIndicator from '../common/StepIndicator'
 import VideoUploader from './VideoUploader'
+import UploadProgressModal from '../common/UploadProgressModal'
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -19,6 +20,11 @@ const FounderPitchForm = () => {
   const [couponApplied, setCouponApplied] = useState(false)
   const [couponError, setCouponError] = useState('')
   const [finalAmount, setFinalAmount] = useState(999)
+  
+  // Upload progress states
+  const [showProgressModal, setShowProgressModal] = useState(false)
+  const [uploadStep, setUploadStep] = useState('uploading')
+  const [uploadProgress, setUploadProgress] = useState(0)
   
   const { register, handleSubmit, control, watch, formState: { errors }, trigger } = useForm({
     mode: 'onChange'
@@ -135,6 +141,9 @@ const FounderPitchForm = () => {
       }
 
       setIsSubmitting(true)
+      setShowProgressModal(true)
+      setUploadStep('uploading')
+      setUploadProgress(0)
       
       // Prepare form data for submission
       const formDataToSubmit = new FormData()
@@ -157,15 +166,38 @@ const FounderPitchForm = () => {
       formDataToSubmit.append('couponCode', couponCode)
       formDataToSubmit.append('amountPaid', finalAmount)
 
-      // Submit to API
+      // Submit to API with progress tracking
       const response = await axios.post(`${API_URL}/api/founders/pitch`, formDataToSubmit, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
         timeout: 300000, // 5 minutes for large video uploads
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          setUploadProgress(percentCompleted)
+          
+          // Update step based on progress
+          if (percentCompleted < 90) {
+            setUploadStep('uploading')
+          } else if (percentCompleted >= 90) {
+            setUploadStep('saving')
+          }
+        }
       })
 
+      // Progress: Saving data
+      setUploadStep('saving')
+      setUploadProgress(95)
+      
+      await new Promise(resolve => setTimeout(resolve, 500)) // Small delay for UX
+
       if (response.data.success) {
+        // Progress: Complete
+        setUploadStep('complete')
+        setUploadProgress(100)
+        
+        await new Promise(resolve => setTimeout(resolve, 1000)) // Show completion
+        
         // Clear saved form data
         localStorage.removeItem('founderPitchFormData')
         
@@ -223,6 +255,9 @@ const FounderPitchForm = () => {
       */
     } catch (error) {
       console.error('Submission error:', error)
+      
+      // Close progress modal
+      setShowProgressModal(false)
       
       // Handle specific error types
       if (error.response?.data?.message) {
@@ -859,6 +894,13 @@ const FounderPitchForm = () => {
           </form>
         </motion.div>
       </div>
+      
+      {/* Upload Progress Modal */}
+      <UploadProgressModal 
+        isOpen={showProgressModal}
+        currentStep={uploadStep}
+        progress={uploadProgress}
+      />
     </div>
   )
 }
