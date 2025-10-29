@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: {
-    fileSize: 100 * 1024 * 1024 // Reduced to 100MB to prevent memory issues
+    fileSize: 200 * 1024 * 1024 // 200MB limit (increased for R2 storage)
   },
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['video/mp4', 'video/quicktime', 'video/x-msvideo', 'video/webm']

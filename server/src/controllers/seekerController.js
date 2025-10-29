@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
-import { uploadVideoToDrive, generateVideoFileName } from '../services/googleDriveService.js'
+import { uploadVideoToR2, generateVideoFileName } from '../services/cloudflareR2Service.js'
 import { saveSeekerApplication } from '../services/googleSheetsService.js'
-import { sendConfirmationEmail, sendAdminNotification } from '../services/emailService.js'
+import { sendConfirmationEmail } from '../services/emailService.js'
 
 // Mock database for tracking (optional if using Sheets)
 const applications = []
@@ -19,23 +19,23 @@ export const submitApplication = async (req, res) => {
     let videoDriveLink = null
     let videoDriveId = null
 
-    // Upload video to Google Drive if enabled
-    if (videoFile && process.env.USE_GOOGLE_DRIVE === 'true') {
-      console.log('🎥 Uploading video to Google Drive...')
+    // Upload video to Cloudflare R2
+    if (videoFile) {
+      console.log('🎥 Uploading video to Cloudflare R2...')
       
       const fileName = generateVideoFileName(applicationData.fullName, applicationId)
       
-      const driveResult = await uploadVideoToDrive(
-        videoFile.path, // Use file path instead of buffer (LOW MEMORY)
+      const r2Result = await uploadVideoToR2(
+        videoFile.path, // File path on disk (LOW MEMORY)
         fileName,
         videoFile.mimetype,
         'seeker'
       )
       
-      videoDriveLink = driveResult.webViewLink
-      videoDriveId = driveResult.fileId
+      videoDriveLink = r2Result.fileUrl
+      videoDriveId = r2Result.fileName
       
-      console.log('✅ Video uploaded to Drive:', fileName)
+      console.log('✅ Video uploaded to R2:', fileName)
     }
 
     // Prepare data for Sheets

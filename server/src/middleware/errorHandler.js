@@ -9,8 +9,8 @@ const errorHandler = (err, req, res, next) => {
   if (err.name === 'MulterError' && err.code === 'LIMIT_FILE_SIZE') {
     return res.status(400).json({
       success: false,
-      message: 'Video file is too large. Maximum size is 100MB.',
-      details: 'Please compress your video before uploading. Recommended: 2-5 minutes at 720p or 1080p.',
+      message: 'Video file is too large. Maximum size is 200MB.',
+      details: 'Please compress your video before uploading. Recommended: 5-8 minutes at 720p or 1080p.',
       tip: 'Use HandBrake (free app) or CloudConvert (online) to compress your video.'
     })
   }
