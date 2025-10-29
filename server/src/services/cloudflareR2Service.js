@@ -46,13 +46,8 @@ export const uploadVideoToR2 = async (filePath, fileName, mimeType, folderType) 
     
     console.log(`✅ Video uploaded successfully to R2!`)
     
-    // Construct public URL
-    // Option 1: Use R2 public domain (if enabled)
-    const accountId = process.env.R2_ACCOUNT_ID
-    const publicUrl = `https://pub-${accountId}.r2.dev/${fullKey}`
-    
-    // Option 2: Use custom domain (if configured)
-    // const publicUrl = `https://videos.incubez.com/${fullKey}`
+    // Construct public URL using Cloudflare R2 public domain
+    const publicUrl = `https://pub-6ad37bc5f3074f2db41fce494eea4da6.r2.dev/${fullKey}`
     
     // Delete temporary file after successful upload
     try {
