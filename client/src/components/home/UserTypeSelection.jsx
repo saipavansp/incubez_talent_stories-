@@ -36,8 +36,8 @@ const UserTypeSelection = () => {
       ],
       link: '/seeker/apply',
       buttonText: 'Apply Now',
-      color: 'incubez-red',
-      gradient: 'from-red-500 to-incubez-red'
+      color: 'incubez-black',
+      gradient: 'from-gray-700 to-incubez-black'
     }
   ]
 
@@ -102,7 +102,11 @@ const UserTypeSelection = () => {
 
                   <Link
                     to={type.link}
-                    className="block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-incubez-red text-white hover:bg-red-700"
+                    className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-white ${
+                      type.color === 'incubez-red' 
+                        ? 'bg-incubez-red hover:bg-red-700' 
+                        : 'bg-incubez-black hover:bg-gray-800'
+                    }`}
                   >
                     {type.buttonText}
                     <motion.span

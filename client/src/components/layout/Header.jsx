@@ -62,7 +62,7 @@ const Header = () => {
               onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
             />
             <h1 className="text-2xl font-bold">
-              <span className={isDarkTheme ? "text-incubez-red" : "text-white"}>Talent</span>
+              <span className="text-incubez-red">Talent</span>
             </h1>
           </motion.div>
 
@@ -82,12 +82,18 @@ const Header = () => {
             ))}
             
             <div className="flex items-center">
-              <Link 
-                to="/founder/pitch" 
+              <a
+                href="/#get-started" 
                 className="bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5"
+                onClick={(e) => {
+                  if (location.pathname === '/') {
+                    e.preventDefault()
+                    document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                  }
+                }}
               >
-                Post Your Pitch
-              </Link>
+                Get Started
+              </a>
             </div>
           </div>
 
@@ -128,13 +134,19 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-4">
-              <Link 
-                to="/founder/pitch" 
-                onClick={() => setIsMobileMenuOpen(false)}
+              <a
+                href="/#get-started" 
+                onClick={(e) => {
+                  setIsMobileMenuOpen(false)
+                  if (location.pathname === '/') {
+                    e.preventDefault()
+                    document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                  }
+                }}
                 className="block w-full text-center bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-red-700"
               >
-                Post Your Pitch
-              </Link>
+                Get Started
+              </a>
             </div>
           </div>
         </motion.div>

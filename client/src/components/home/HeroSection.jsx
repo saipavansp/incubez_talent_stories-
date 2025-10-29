@@ -78,11 +78,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex justify-center mb-12 px-4"
           >
-            <Link 
-              to="/founder/pitch" 
+            <a 
+              href="#get-started" 
               className="btn-primary text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-3 sm:py-4 flex items-center justify-center gap-2 group w-full sm:w-auto max-w-sm"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+              }}
             >
-              Post Your Pitch
+              Get Started
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}
@@ -90,7 +94,7 @@ const HeroSection = () => {
               >
                 →
               </motion.span>
-            </Link>
+            </a>
           </motion.div>
 
           {/* Video Demo Button */}

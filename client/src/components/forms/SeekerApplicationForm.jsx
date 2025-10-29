@@ -113,11 +113,15 @@ const SeekerApplicationForm = () => {
       const stepData = watch()
       saveFormData(stepData)
       setCurrentStep(currentStep + 1)
+      // Scroll to top of the page
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const handlePrevious = () => {
     setCurrentStep(currentStep - 1)
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleApplyCoupon = () => {
@@ -134,7 +138,9 @@ const SeekerApplicationForm = () => {
     }
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, retryCount = 0) => {
+    const maxRetries = 2
+    
     try {
       // Check if coupon is applied
       if (!couponApplied) {
@@ -200,8 +206,14 @@ const SeekerApplicationForm = () => {
         
         await new Promise(resolve => setTimeout(resolve, 1000)) // Show completion
         
-        // Clear saved form data
+        // Clear ALL form data and state
         localStorage.removeItem('seekerApplicationFormData')
+        setFormData({})
+        setVideoFile(null)
+        setCouponCode('FNDRMET')
+        setCouponApplied(false)
+        setFinalAmount(499)
+        setCurrentStep(1)
         
         // Show success message
         toast.success('Application submitted successfully!')
@@ -210,7 +222,7 @@ const SeekerApplicationForm = () => {
         navigate('/payment/success', { 
           state: { 
             applicationId: response.data.applicationId,
-            amount: finalAmount,
+            amount: 0, // Reset to 0 for invoice page
             transactionId: `TXN${Date.now()}`,
             type: 'seeker',
             couponApplied: couponApplied,
@@ -258,6 +270,32 @@ const SeekerApplicationForm = () => {
     } catch (error) {
       console.error('Submission error:', error)
       
+      // Retry logic for network errors and 502/503/504 errors
+      const shouldRetry = (
+        (error.code === 'ERR_NETWORK' || 
+         error.response?.status === 502 || 
+         error.response?.status === 503 || 
+         error.response?.status === 504) && 
+        retryCount < maxRetries
+      )
+      
+      if (shouldRetry) {
+        console.log(`Retrying submission... Attempt ${retryCount + 1}/${maxRetries}`)
+        setShowProgressModal(false)
+        setIsSubmitting(false)
+        
+        // Wait before retrying (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, (retryCount + 1) * 2000))
+        
+        toast('Retrying submission...', {
+          icon: '🔄',
+          duration: 2000
+        })
+        
+        // Retry the submission
+        return onSubmit(data, retryCount + 1)
+      }
+      
       // Close progress modal
       setShowProgressModal(false)
       
@@ -290,8 +328,13 @@ const SeekerApplicationForm = () => {
             })
           }, 1000)
         }
-      } else if (error.code === 'ERR_NETWORK') {
-        toast.error('Network error. Please check your connection and try again.')
+      } else if (error.code === 'ERR_NETWORK' || error.response?.status === 502) {
+        toast.error('Server is busy or network error. Please try again in a moment.', {
+          duration: 7000,
+        })
+        toast('💡 Tip: If the issue persists, try refreshing the page.', {
+          duration: 5000,
+        })
       } else {
         toast.error('Failed to submit application. Please try again.')
       }
