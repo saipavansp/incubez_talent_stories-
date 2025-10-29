@@ -30,6 +30,12 @@ Variable: CLIENT_URL
 Value: https://incubez-talent-stories-4eyw.onrender.com
 ```
 
+**💡 Note:** You can use either:
+- Render link: `https://incubez-talent-stories-4eyw.onrender.com` (default)
+- Custom domain: `https://www.incubez.in` (after DNS setup)
+
+**The CORS is already configured to allow BOTH origins simultaneously!**
+
 ---
 
 ### **2. Database (Optional)**
@@ -233,7 +239,14 @@ Variable: VITE_API_URL
 Value: https://incubez-talent-stories.onrender.com
 ```
 
+**💡 Note:** Backend will remain at Render URL:
+- `https://incubez-talent-stories.onrender.com` (backend API)
+
 **This tells your frontend where to send API requests!**
+
+**✅ With this setup, BOTH frontends will work:**
+- ✅ Render Frontend: `https://incubez-talent-stories-4eyw.onrender.com` → Backend ✅
+- ✅ Custom Domain: `https://www.incubez.in` → Backend ✅
 
 ---
 
