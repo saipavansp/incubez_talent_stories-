@@ -35,20 +35,19 @@ export const uploadVideoToDrive = async (filePath, fileName, mimeType, folderTyp
   try {
     const drive = initializeDrive()
     
-    // Determine subfolder based on type
+    // Use parent folder directly (no subfolders for now)
     const parentFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID
     
-    // Get or create subfolder
-    const subfolderName = folderType === 'founder' ? 'Founders_Pitches' : 'Seekers_Applications'
-    const subfolderId = await getOrCreateSubfolder(drive, parentFolderId, subfolderName)
+    // Add folder type prefix to filename for organization
+    const prefixedFileName = `${folderType === 'founder' ? 'FOUNDER_' : 'SEEKER_'}${fileName}`
 
     // Create readable stream from file (LOW MEMORY USAGE)
     const fileStream = fs.createReadStream(filePath)
 
-    // File metadata
+    // File metadata - upload directly to parent folder
     const fileMetadata = {
-      name: fileName,
-      parents: [subfolderId],
+      name: prefixedFileName,
+      parents: [parentFolderId],
     }
 
     const media = {
@@ -56,7 +55,7 @@ export const uploadVideoToDrive = async (filePath, fileName, mimeType, folderTyp
       body: fileStream,
     }
 
-    console.log(`📤 Uploading ${fileName} to Google Drive...`)
+    console.log(`📤 Uploading ${prefixedFileName} to Google Drive...`)
 
     // Upload file
     const response = await drive.files.create({
