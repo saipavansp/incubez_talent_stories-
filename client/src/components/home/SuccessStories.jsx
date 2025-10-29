@@ -14,21 +14,21 @@ const SuccessStories = () => {
       title: "Looking for Founder's Office Role",
       company: 'Chahath',
       videoUrl: "/videos/chahath - founder's office Role.mp4",
-      thumbnail: "" // Thumbnail optional - will use first video frame
+      thumbnail: "/images/thumbnails/chahath-thumbnail.jpg"
     },
     {
       id: 2,
       title: 'Looking for Co-Founder',
       company: 'Pinkwellness',
       videoUrl: '/videos/pinkwellness seeking co founder.mp4',
-      thumbnail: "" // Thumbnail optional - will use first video frame
+      thumbnail: "" // Add pinkwellness-thumbnail.jpg when available
     },
     {
       id: 3,
       title: "Looking for Founder's Office Role",
       company: 'Startup',
       videoUrl: "/videos/Founder's office Role.mp4",
-      thumbnail: "" // Thumbnail optional - will use first video frame
+      thumbnail: "" // Add startup-thumbnail.jpg when available
     }
   ]
 
