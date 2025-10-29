@@ -33,6 +33,10 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
   'https://incubez-talent-stories-4eyw.onrender.com',
+  'https://www.incubez.in',
+  'https://incubez.in',
+  'http://www.incubez.in', // HTTP redirect
+  'http://incubez.in', // HTTP redirect
   process.env.CLIENT_URL
 ].filter(Boolean)
 

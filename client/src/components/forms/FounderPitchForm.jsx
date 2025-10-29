@@ -659,9 +659,15 @@ const FounderPitchForm = () => {
             <VideoUploader
               onVideoSelect={(file) => setVideoFile(file)}
               existingVideo={videoFile}
-              maxSize={500 * 1024 * 1024} // 500MB
+              maxSize={250 * 1024 * 1024} // 250MB
               acceptedFormats={['video/mp4', 'video/quicktime', 'video/x-msvideo', 'video/webm']}
             />
+            
+            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-sm text-blue-800">
+                <strong>💡 Pro Tip:</strong> Maximum video size is 250MB. For best results, keep your video 5-8 minutes at 720p or 1080p quality.
+              </p>
+            </div>
           </div>
         )
 
