@@ -66,13 +66,6 @@ export const submitPitch = async (req, res) => {
       console.log('✅ Data saved to Google Sheets')
     }
 
-    // Send confirmation email if enabled
-    if (process.env.USE_EMAIL_NOTIFICATIONS === 'true') {
-      console.log('📧 Sending confirmation email...')
-      await sendConfirmationEmail(submissionData, 'founder')
-      console.log('✅ Confirmation email sent')
-    }
-
     // Save to mock database
     pitches.push({
       id: uuidv4(),
@@ -80,7 +73,16 @@ export const submitPitch = async (req, res) => {
       createdAt: new Date(),
     })
 
-    // Return success response
+    // Send confirmation email ASYNC (don't wait - fire and forget)
+    if (process.env.USE_EMAIL_NOTIFICATIONS === 'true') {
+      console.log('📧 Sending confirmation email (async)...')
+      // Don't await - send in background to avoid blocking response
+      sendConfirmationEmail(submissionData, 'founder')
+        .then(() => console.log('✅ Confirmation email sent'))
+        .catch((error) => console.error('⚠️ Email failed (non-blocking):', error.message))
+    }
+
+    // Return success response IMMEDIATELY (don't wait for email)
     res.json({
       success: true,
       applicationId,

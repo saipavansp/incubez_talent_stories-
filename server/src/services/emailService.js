@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-// Initialize email transporter
+// Initialize email transporter with timeout
 const createTransporter = () => {
   return nodemailer.createTransport({
     host: process.env.EMAIL_HOST || 'smtp.gmail.com',
@@ -10,6 +10,9 @@ const createTransporter = () => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    connectionTimeout: 10000, // 10 seconds connection timeout
+    greetingTimeout: 10000, // 10 seconds greeting timeout
+    socketTimeout: 15000, // 15 seconds socket timeout
   })
 }
 
