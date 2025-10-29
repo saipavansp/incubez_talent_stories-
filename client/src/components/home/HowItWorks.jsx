@@ -6,7 +6,7 @@ import {
   VideoCameraIcon, 
   ClipboardDocumentCheckIcon,
   RocketLaunchIcon,
-  CurrencyRupeeIcon,
+  PaperAirplaneIcon,
   SparklesIcon 
 } from '@heroicons/react/24/outline'
 
@@ -23,9 +23,9 @@ const HowItWorks = () => {
       description: 'Create a 1-4 minute video explaining your vision and requirements'
     },
     {
-      icon: CurrencyRupeeIcon,
-      title: 'Make Payment',
-      description: 'Complete secure payment to publish your pitch'
+      icon: PaperAirplaneIcon,
+      title: 'Submit Application',
+      description: 'Submit your pitch to connect with qualified candidates'
     },
     {
       icon: UserGroupIcon,
@@ -51,9 +51,9 @@ const HowItWorks = () => {
       description: 'Create a compelling video showcasing your skills and passion'
     },
     {
-      icon: CurrencyRupeeIcon,
+      icon: PaperAirplaneIcon,
       title: 'Submit Application',
-      description: 'Pay application fee and submit to matching opportunities'
+      description: 'Submit your application to matching opportunities'
     },
     {
       icon: RocketLaunchIcon,

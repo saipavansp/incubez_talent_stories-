@@ -21,7 +21,7 @@ const SeekerApplicationForm = () => {
   const [uploadStep, setUploadStep] = useState('uploading')
   const [uploadProgress, setUploadProgress] = useState(0)
   const [formData, setFormData] = useState({})
-  const [couponCode, setCouponCode] = useState('')
+  const [couponCode, setCouponCode] = useState('FNDRMET') // Auto-filled coupon
   const [couponApplied, setCouponApplied] = useState(false)
   const [couponError, setCouponError] = useState('')
   const [finalAmount, setFinalAmount] = useState(499)
@@ -841,11 +841,6 @@ const SeekerApplicationForm = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-              <p className="text-sm text-blue-800">
-                <strong>Note:</strong> Your video and details will be saved to our system after submission.
-              </p>
-            </div>
 
             <div className="flex items-start mt-4">
               <input

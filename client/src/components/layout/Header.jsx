@@ -58,12 +58,11 @@ const Header = () => {
             <img 
               src="/images/incubez-logo.svg" 
               alt="INCUBEZ Logo" 
-              className="h-10 w-10 object-contain"
+              className="h-10 w-auto object-contain"
               onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
             />
             <h1 className="text-2xl font-bold">
-              <span className={isDarkTheme ? "text-incubez-black" : "text-white"}>INCUBEZ</span>
-              <span className="text-incubez-red"> Talent</span>
+              <span className="text-incubez-red">Talent</span>
             </h1>
           </motion.div>
 
