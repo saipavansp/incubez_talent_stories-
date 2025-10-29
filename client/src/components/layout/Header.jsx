@@ -92,7 +92,7 @@ const Header = () => {
                   }
                 }}
               >
-                Get Started
+                Post Your Pitch
               </a>
             </div>
           </div>
@@ -145,7 +145,7 @@ const Header = () => {
                 }}
                 className="block w-full text-center bg-incubez-red text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-red-700"
               >
-                Get Started
+                Post Your Pitch
               </a>
             </div>
           </div>

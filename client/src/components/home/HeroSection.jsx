@@ -86,7 +86,7 @@ const HeroSection = () => {
                 document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
               }}
             >
-              Get Started
+              Post Your Pitch
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}

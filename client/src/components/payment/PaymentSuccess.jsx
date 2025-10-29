@@ -10,6 +10,9 @@ const PaymentSuccess = () => {
   const [applicationDetails, setApplicationDetails] = useState(null)
 
   useEffect(() => {
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    
     // Get application details from location state
     if (location.state) {
       setApplicationDetails(location.state)
