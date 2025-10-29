@@ -56,13 +56,13 @@ const Header = () => {
             onClick={handleLogoClick}
           >
             <img 
-              src="/images/incubez-logo.svg" 
+              src={isDarkTheme ? "/images/incubez-logo.svg" : "/images/incubez-logo-white.svg"}
               alt="INCUBEZ Logo" 
-              className="h-10 w-auto object-contain"
+              className="h-10 w-auto object-contain transition-all duration-300"
               onError={(e) => { e.target.style.display = 'none' }} // Hide if logo not found
             />
             <h1 className="text-2xl font-bold">
-              <span className="text-incubez-red">Talent</span>
+              <span className={isDarkTheme ? "text-incubez-red" : "text-white"}>Talent</span>
             </h1>
           </motion.div>
 

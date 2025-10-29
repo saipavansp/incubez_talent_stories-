@@ -14,21 +14,21 @@ const SuccessStories = () => {
       title: "Looking for Founder's Office Role",
       company: 'Chahath',
       videoUrl: "/videos/chahath - founder's office Role.mp4",
-      thumbnail: "/images/thumbnails/chahath-thumbnail.jpg"
+      thumbnail: "" // Thumbnail optional - will use first video frame
     },
     {
       id: 2,
       title: 'Looking for Co-Founder',
       company: 'Pinkwellness',
       videoUrl: '/videos/pinkwellness seeking co founder.mp4',
-      thumbnail: "/images/thumbnails/pinkwellness-thumbnail.jpg"
+      thumbnail: "" // Thumbnail optional - will use first video frame
     },
     {
       id: 3,
       title: "Looking for Founder's Office Role",
       company: 'Startup',
       videoUrl: "/videos/Founder's office Role.mp4",
-      thumbnail: "/images/thumbnails/startup-thumbnail.jpg"
+      thumbnail: "" // Thumbnail optional - will use first video frame
     }
   ]
 
@@ -83,15 +83,11 @@ const SuccessStories = () => {
                     {/* Video Thumbnail (First Frame) */}
                     <video
                       src={stories[currentIndex].videoUrl}
-                      poster={stories[currentIndex].thumbnail}
+                      {...(stories[currentIndex].thumbnail && { poster: stories[currentIndex].thumbnail })}
                       className="w-full h-full object-contain"
                       preload="metadata"
                       muted
                       playsInline
-                      onError={(e) => {
-                        // Fallback if thumbnail not found
-                        e.target.removeAttribute('poster')
-                      }}
                     />
                     
                     {/* Dark Overlay for Better Text Visibility */}
