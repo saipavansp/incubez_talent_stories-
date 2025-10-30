@@ -79,7 +79,7 @@ const SuccessStories = () => {
               >
                 <div className="relative">
                   {/* Video Preview */}
-                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] bg-black rounded-xl overflow-hidden">
+                  <div className="relative h-56 xs:h-64 sm:h-80 md:h-96 lg:h-[500px] bg-black rounded-xl overflow-hidden">
                     {/* Video Thumbnail (First Frame) */}
                     <video
                       src={stories[currentIndex].videoUrl}
@@ -88,6 +88,8 @@ const SuccessStories = () => {
                       preload="metadata"
                       muted
                       playsInline
+                      aria-label={`Video pitch from ${stories[currentIndex].company} - ${stories[currentIndex].title}`}
+                      title={`${stories[currentIndex].company} video pitch`}
                     />
                     
                     {/* Dark Overlay for Better Text Visibility */}
@@ -103,9 +105,10 @@ const SuccessStories = () => {
                         setIsVideoModalOpen(true)
                       }}
                       type="button"
+                      aria-label={`Play video pitch from ${stories[currentIndex].company}`}
                     >
                       <div className="bg-incubez-red rounded-full p-4 sm:p-5 md:p-6 group-hover:scale-110 group-active:scale-95 transition-all duration-300 shadow-2xl">
-                        <PlayIcon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-white" />
+                        <PlayIcon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-white" aria-hidden="true" />
                       </div>
                     </button>
 

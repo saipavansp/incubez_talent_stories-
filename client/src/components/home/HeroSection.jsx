@@ -53,7 +53,7 @@ const HeroSection = () => {
           className="max-w-4xl mx-auto px-4"
         >
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight px-2">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight px-2 sm:px-4">
             Connect with Your{' '}
             <span className="text-incubez-red">Perfect Match</span>
             <br />
@@ -65,7 +65,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto px-4"
+            className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto px-4 sm:px-6"
           >
             Whether you're a founder seeking co-founders and key talent, or a professional 
             ready to join an exciting startup journey - find your perfect match today.
@@ -76,21 +76,23 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center mb-12 px-4"
+            className="flex justify-center mb-8 sm:mb-12 px-4"
           >
             <a 
               href="#get-started" 
-              className="btn-primary text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-3 sm:py-4 flex items-center justify-center gap-2 group w-full sm:w-auto max-w-sm"
+              className="btn-primary text-sm xs:text-base sm:text-lg md:text-xl px-6 xs:px-8 sm:px-10 md:px-12 py-3 sm:py-4 flex items-center justify-center gap-2 group w-full sm:w-auto max-w-sm"
               onClick={(e) => {
                 e.preventDefault()
                 document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
               }}
+              aria-label="Scroll to get started section and post your pitch"
             >
               Post Your Pitch
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                aria-hidden="true"
               >
                 →
               </motion.span>
@@ -105,15 +107,16 @@ const HeroSection = () => {
           >
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="inline-flex items-center gap-3 text-white hover:text-incubez-red transition-colors group"
+              className="inline-flex items-center gap-2 sm:gap-3 text-white hover:text-incubez-red transition-colors group"
+              aria-label="Watch video about how INCUBEZ works"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-white rounded-full animate-ping"></div>
-                <div className="relative bg-white rounded-full p-3 group-hover:bg-incubez-red transition-colors">
-                  <PlayIcon className="h-6 w-6 text-incubez-black" />
+                <div className="relative bg-white rounded-full p-2 sm:p-3 group-hover:bg-incubez-red transition-colors">
+                  <PlayIcon className="h-5 w-5 sm:h-6 sm:w-6 text-incubez-black" />
                 </div>
               </div>
-              <span className="text-lg font-medium">Watch How It Works</span>
+              <span className="text-base sm:text-lg font-medium">Watch How It Works</span>
             </button>
           </motion.div>
 
