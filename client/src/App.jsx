@@ -9,6 +9,8 @@ import PitchesPage from './pages/PitchesPage'
 import FounderPitchPage from './pages/FounderPitchPage'
 import SeekerApplicationPage from './pages/SeekerApplicationPage'
 import PaymentSuccessPage from './pages/PaymentSuccessPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
           <Route path="/founder/pitch" element={<FounderPitchPage />} />
           <Route path="/seeker/apply" element={<SeekerApplicationPage />} />
           <Route path="/payment/success" element={<PaymentSuccessPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>

@@ -1,0 +1,26 @@
+# robots.txt for INCUBEZ Talent (www.incubez.in)
+
+# Allow all search engines to index the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.incubez.in/sitemap.xml
+
+# Specific rules for important bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow sensitive or admin areas (if any in future)
+# Disallow: /admin/
+# Disallow: /api/
+
