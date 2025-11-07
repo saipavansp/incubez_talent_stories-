@@ -402,8 +402,8 @@ const SeekerApplicationForm = () => {
                 {...register('linkedinUrl', { 
                   required: 'LinkedIn URL is required',
                   pattern: {
-                    value: /^https:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
-                    message: 'Please enter a valid LinkedIn profile URL'
+                    value: /^(https?:\/\/)?(www\.|[a-z]{2}\.)?linkedin\.com\/(in|company|pub|profile|school|showcase)\/[\w\-\%\.]+\/?.*$/i,
+                    message: 'Please enter a valid LinkedIn URL'
                   }
                 })}
                 className="input-field"
@@ -411,6 +411,9 @@ const SeekerApplicationForm = () => {
                 defaultValue={formData.linkedinUrl}
               />
               {errors.linkedinUrl && <p className="text-red-500 text-sm mt-1">{errors.linkedinUrl.message}</p>}
+              <p className="text-xs text-gray-500 mt-1">
+                Accepts any LinkedIn profile, company, or page URL (with or without https://)
+              </p>
             </div>
 
             <div>
