@@ -70,25 +70,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-400">
                   <EnvelopeIcon className="h-5 w-5" />
-                  <div className="flex flex-col">
-                    <a href="mailto:info@incubez.com" className="hover:text-incubez-red transition-colors">
-                      info@incubez.com
-                    </a>
-                    <a href="mailto:talent@incubez.com" className="hover:text-incubez-red transition-colors">
-                      talent@incubez.com
-                    </a>
-                  </div>
+                  <a href="mailto:incubez.ott@gmail.com" className="hover:text-incubez-red transition-colors">
+                    incubez.ott@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <PhoneIcon className="h-5 w-5" />
-                  <div className="flex flex-col">
-                    <a href="tel:+919177999368" className="hover:text-incubez-red transition-colors">
-                      +91 91779 99368
-                    </a>
-                    <a href="tel:+918522832623" className="hover:text-incubez-red transition-colors">
-                      +91 85228 32623
-                    </a>
-                  </div>
+                  <a href="tel:+919177999368" className="hover:text-incubez-red transition-colors">
+                    +91 91779 99368
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <MapPinIcon className="h-5 w-5" />

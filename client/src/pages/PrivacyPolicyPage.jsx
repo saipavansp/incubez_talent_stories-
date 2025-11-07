@@ -151,7 +151,7 @@ const PrivacyPolicyPage = () => {
                 <li>Maintain your profile active on our platform until you request deletion</li>
               </ul>
               <p className="text-gray-700 leading-relaxed">
-                You may request deletion of your account and personal information at any time by contacting us at <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a>.
+                You may request deletion of your account and personal information at any time by contacting us at <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a>.
               </p>
             </section>
 
@@ -170,7 +170,7 @@ const PrivacyPolicyPage = () => {
                 <li><strong>Withdraw Consent:</strong> Withdraw consent for processing where consent was the legal basis</li>
               </ul>
               <p className="text-gray-700 leading-relaxed">
-                To exercise any of these rights, please contact us at <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a> or call us at <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a>.
+                To exercise any of these rights, please contact us at <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a> or call us at <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a>.
               </p>
             </section>
 
@@ -212,7 +212,7 @@ const PrivacyPolicyPage = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-incubez-black mb-4">10. Children's Privacy</h2>
               <p className="text-gray-700 leading-relaxed">
-                Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately at <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a>, and we will take steps to delete such information.
+                Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately at <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a>, and we will take steps to delete such information.
               </p>
             </section>
 
@@ -241,10 +241,10 @@ const PrivacyPolicyPage = () => {
               <div className="bg-gray-50 p-6 rounded-lg">
                 <p className="text-gray-700 font-semibold mb-2">Webkraft Technologies (INCUBEZ Talent)</p>
                 <p className="text-gray-700 mb-1">
-                  <strong>Email:</strong> <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a> or <a href="mailto:talent@incubez.com" className="text-incubez-red hover:underline">talent@incubez.com</a>
+                  <strong>Email:</strong> <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a>
                 </p>
                 <p className="text-gray-700 mb-1">
-                  <strong>Phone:</strong> <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a> or <a href="tel:+918522832623" className="text-incubez-red hover:underline">+91 85228 32623</a>
+                  <strong>Phone:</strong> <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a>
                 </p>
                 <p className="text-gray-700 mb-1">
                   <strong>Location:</strong> Hyderabad, India

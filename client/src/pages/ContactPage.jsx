@@ -35,8 +35,7 @@ const ContactPage = () => {
                   <EnvelopeIcon className="h-6 w-6 text-incubez-red mt-1" />
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-600">talent@incubez.com</p>
-                    <p className="text-gray-600">support@incubez.com</p>
+                    <p className="text-gray-600">incubez.ott@gmail.com</p>
                   </div>
                 </div>
                 
@@ -44,7 +43,7 @@ const ContactPage = () => {
                   <PhoneIcon className="h-6 w-6 text-incubez-red mt-1" />
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-gray-600">+91 85228 32623</p>
+                    <p className="text-gray-600">+91 91779 99368</p>
                   </div>
                 </div>
                 

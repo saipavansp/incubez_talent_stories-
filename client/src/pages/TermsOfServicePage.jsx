@@ -294,7 +294,7 @@ const TermsOfServicePage = () => {
               
               <h3 className="text-xl font-semibold text-incubez-black mb-3">13.1 By You</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                You may terminate your account at any time by contacting us at <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a>. Upon termination, your profile and content may be removed from public view, but we may retain copies for legal and backup purposes.
+                You may terminate your account at any time by contacting us at <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a>. Upon termination, your profile and content may be removed from public view, but we may retain copies for legal and backup purposes.
               </p>
 
               <h3 className="text-xl font-semibold text-incubez-black mb-3">13.2 By Us</h3>
@@ -330,7 +330,7 @@ const TermsOfServicePage = () => {
 
               <h3 className="text-xl font-semibold text-incubez-black mb-3">14.3 Informal Resolution</h3>
               <p className="text-gray-700 leading-relaxed">
-                Before filing any formal legal proceedings, we encourage you to contact us at <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a> to attempt to resolve the dispute informally.
+                Before filing any formal legal proceedings, we encourage you to contact us at <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a> to attempt to resolve the dispute informally.
               </p>
             </section>
 
@@ -373,10 +373,10 @@ const TermsOfServicePage = () => {
               <div className="bg-gray-50 p-6 rounded-lg">
                 <p className="text-gray-700 font-semibold mb-2">Webkraft Technologies (INCUBEZ Talent)</p>
                 <p className="text-gray-700 mb-1">
-                  <strong>Email:</strong> <a href="mailto:info@incubez.com" className="text-incubez-red hover:underline">info@incubez.com</a> or <a href="mailto:talent@incubez.com" className="text-incubez-red hover:underline">talent@incubez.com</a>
+                  <strong>Email:</strong> <a href="mailto:incubez.ott@gmail.com" className="text-incubez-red hover:underline">incubez.ott@gmail.com</a>
                 </p>
                 <p className="text-gray-700 mb-1">
-                  <strong>Phone:</strong> <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a> or <a href="tel:+918522832623" className="text-incubez-red hover:underline">+91 85228 32623</a>
+                  <strong>Phone:</strong> <a href="tel:+919177999368" className="text-incubez-red hover:underline">+91 91779 99368</a>
                 </p>
                 <p className="text-gray-700 mb-1">
                   <strong>Location:</strong> Hyderabad, India
